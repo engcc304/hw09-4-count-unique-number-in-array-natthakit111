@@ -47,3 +47,42 @@
         7 -> 1 value.
         9 -> 2 values.
 */
+#include <stdio.h>
+
+int main() {
+    int N ;
+    
+    // รับค่า N จากผู้ใช้
+    printf( "Input N : \n" ) ;
+    scanf( "%d", &N ) ;
+    
+    // ประกาศอาเรย์ขนาด N
+    int arr[N] ;
+    
+    // รับข้อมูลลงในอาเรย์
+    for ( int i = 0 ; i < N ; i++ ) {
+        printf( "Element[%d] : \n", i ) ;
+        scanf( "%d", &arr[i] ) ;
+    }//end for
+    
+    // สร้างอาเรย์เพื่อเก็บจำนวนครั้งที่แต่ละตัวเลขปรากฏ
+    int count[1000] = { 0 }; // เรากำหนดขนาดของ count ให้มากกว่าค่าสูงสุดที่อาเรย์ arr อาจจะมี
+    
+    // นับจำนวนครั้งที่แต่ละตัวเลขปรากฏ
+    for ( int i = 0 ; i < N ; i++ ) {
+        count[arr[i]]++ ;
+    }//end for
+    
+    // แสดงผลลัพธ์
+    for ( int i = 0 ; i < 1000 ; i++ ) { // วนลูปตามขนาดของ count
+        if ( count[i] > 0 ) {
+            printf( "%d -> %d value", i, count[i] ) ;
+            if ( count[i] > 1 ) {
+                printf( "s" ) ;
+            }//end if
+            printf( ".\n" ) ;
+        }//end if
+    }//end for
+    
+    return 0 ;
+}//end function
